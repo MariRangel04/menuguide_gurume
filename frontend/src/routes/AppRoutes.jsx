@@ -4,6 +4,7 @@ import Home from "../pages/Home"
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import ForgotPassword from "../pages/ForgotPassword"
+import AddDish from "../pages/AddDish"
 
 export default function AppRoutes() {
 
@@ -20,6 +21,8 @@ export default function AppRoutes() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/forgot" element={<ForgotPassword />} />
+
+        <Route path="/add-dish" element={<AddDish />} />
 
       </Routes>
 
