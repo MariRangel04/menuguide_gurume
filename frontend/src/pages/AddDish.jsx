@@ -6,6 +6,9 @@ export default function AddDish() {
   const [descricao, setDescricao] = useState("")
   const [preco, setPreco] = useState("")
   const [categoria, setCategoria] = useState("")
+  const [imagem, setImagem] = useState("")
+
+
 
   async function handleSubmit(e) {
 
@@ -18,12 +21,13 @@ export default function AddDish() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          nome,
-          descricao,
-          preco: Number(preco),
-          categoria
-        })
+body: JSON.stringify({
+  nome,
+  descricao,
+  preco: Number(preco),
+  categoria,
+  imagem
+})
       }
     )
 
@@ -34,6 +38,7 @@ export default function AddDish() {
       setDescricao("")
       setPreco("")
       setCategoria("")
+      setImagem("")
     }
   }
 
@@ -68,14 +73,60 @@ export default function AddDish() {
           onChange={(e) => setPreco(e.target.value)}
           style={styles.input}
         />
-
         <input
-          placeholder="Categoria"
-          value={categoria}
-          onChange={(e) => setCategoria(e.target.value)}
-          style={styles.input}
-        />
+  placeholder="URL da imagem"
+  value={imagem}
+  onChange={(e) => setImagem(e.target.value)}
+  style={styles.input}
+/>
 
+        <select
+  value={categoria}
+  onChange={(e) => setCategoria(e.target.value)}
+  style={styles.input}
+>
+
+  <option value="">
+    Selecione uma categoria
+  </option>
+
+  <option value="Entradas">
+    Entradas
+  </option>
+
+  <option value="Brisas">
+    Brisas
+  </option>
+
+  <option value="Sashimi">
+    Sashimi
+  </option>
+
+  <option value="Sushi">
+    Sushi
+  </option>
+
+  <option value="Rolls">
+    Rolls
+  </option>
+
+  <option value="Combinados">
+    Combinados
+  </option>
+
+  <option value="VegMê">
+    VegMê
+  </option>
+
+  <option value="Sobremesas">
+    Sobremesas
+  </option>
+
+  <option value="Bebidas">
+    Bebidas
+  </option>
+
+</select>
         <button style={styles.button}>
           Salvar
         </button>
