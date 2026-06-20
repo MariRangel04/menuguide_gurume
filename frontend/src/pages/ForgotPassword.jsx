@@ -6,7 +6,7 @@ export default function ForgotPassword() {
 
       <form style={styles.form}>
 
-        <h1>Recuperar senha</h1>
+        <h1>Recuperar Senha</h1>
 
         <input
           type="email"
@@ -14,8 +14,11 @@ export default function ForgotPassword() {
           style={styles.input}
         />
 
-        <button style={styles.button}>
-          Enviar recuperação
+        <button
+          type="submit"
+          style={styles.button}
+        >
+          Enviar Recuperação
         </button>
 
       </form>

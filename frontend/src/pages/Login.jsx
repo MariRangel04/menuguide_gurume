@@ -1,6 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
-
+import { useNavigate, Link } from "react-router-dom"
 import logo from "../assets/gurume_logo.png"
 import logo2 from "../assets/gurume_logo2.png"
 
@@ -8,6 +8,8 @@ export default function Login() {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const navigate = useNavigate()
 
   async function handleLogin(e) {
 
@@ -23,13 +25,22 @@ export default function Login() {
         }
       )
 
-      alert(response.data.message)
+alert(response.data.message)
 
-      console.log(response.data)
+localStorage.setItem(
+  "role",
+  response.data.user.role
+)
+console.log(response.data.user)
+
+navigate("/menu")
 
     } catch (error) {
 
-      alert(error.response.data.message)
+      alert(
+        error.response?.data?.message ||
+        "Erro ao fazer login"
+      )
 
     }
 
@@ -55,13 +66,18 @@ export default function Login() {
 
       </div>
 
-      <form style={styles.form} onSubmit={handleLogin}>
+      <form
+        style={styles.form}
+        onSubmit={handleLogin}
+      >
 
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
           style={styles.input}
         />
 
@@ -69,21 +85,32 @@ export default function Login() {
           type="password"
           placeholder="Senha"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) =>
+            setPassword(e.target.value)
+          }
           style={styles.input}
         />
 
-        <button type="submit" style={styles.button}>
+        <button
+          type="submit"
+          style={styles.button}
+        >
           Entrar
         </button>
 
-        <a href="/forgot" style={styles.link}>
-          Esqueceu a senha?
-        </a>
+<Link
+  to="/forgot"
+  style={styles.link}
+>
+  Esqueceu a senha?
+</Link>
 
-        <a href="/register" style={styles.link}>
-          Não possui cadastro?
-        </a>
+<Link
+  to="/register"
+  style={styles.link}
+>
+  Não possui cadastro?
+</Link>
 
       </form>
 

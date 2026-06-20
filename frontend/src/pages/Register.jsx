@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function Register() {
 
@@ -7,6 +8,7 @@ export default function Register() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [role, setRole] = useState("funcionario")
+  const navigate = useNavigate()
 
   async function handleRegister(e) {
 
@@ -24,9 +26,9 @@ export default function Register() {
         }
       )
 
-      alert("Cadastro realizado")
+alert("Cadastro realizado com sucesso")
 
-      console.log(response.data)
+navigate("/login")
 
     } catch (error) {
 

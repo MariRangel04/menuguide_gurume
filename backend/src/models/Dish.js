@@ -2,26 +2,6 @@ import mongoose from "mongoose"
 
 const dishSchema = new mongoose.Schema({
 
-
-  imagem: {
-  type: String
-},
-
-ingredientes: [{
-  type: String
-}],
-
-alergenicos: [{
-  type: String
-}],
-
-molhos: [{
-  type: String
-}],
-
-finalizacao: [{
-  type: String
-}],
   nome: {
     type: String,
     required: true
@@ -36,24 +16,34 @@ finalizacao: [{
     type: Number,
     required: true
   },
+
   imagem: {
-  type: String
+    type: String
   },
 
   categoria: {
     type: String,
-    required: true,
-    enum: [
-      "Entradas",
-      "Brisas",
-      "Sashimi",
-      "Sushi",
-      "Rolls",
-      "Combinados",
-      "VegMê",
-      "Sobremesas",
-      "Bebidas"
-    ]
+    required: true
+  },
+
+  ingredientes: {
+    type: [String],
+    default: []
+  },
+
+  alergenicos: {
+    type: [String],
+    default: []
+  },
+
+  molhos: {
+    type: [String],
+    default: []
+  },
+
+  finalizacoes: {
+    type: [String],
+    default: []
   }
 
 })
